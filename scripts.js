@@ -1,5 +1,8 @@
-// scripts.js
-
+/*
+scripts.js
+Author: Alexandros Kordatzakis
+Created: 2024
+*/
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     
