@@ -16,7 +16,31 @@ body {
     flex-direction: column;
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
+    cursor: url('media/cursors/light/arrow.cur'), auto; /* Light-Mode Cursor */
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Cursors */
+/* Fluent Cursors from rw-designer */ 
+a {
+    cursor: url('media/cursors/light/link.cur'), pointer; /* Cursor for links */
+}
+
+input, textarea {
+    cursor: url('media/cursors/light/text.cur'), text; /* Cursor for text inputs */
+}
+
+.btn {
+    cursor: url('media/cursors/light/link.cur'), auto; /* Cursor for buttons */
+}
+
+h1, h2, h3, p, li {
+    cursor: url('media/cursors/light/text.cur'), text; /* Cursor for text on paragraphs, titles, etc. */
+}
+
 
 .container {
     width: 80%;
@@ -81,15 +105,17 @@ header nav ul li a:hover {
     border-radius: 5px;
 }
 
+/* Dark Mode and Switcher */
 .theme-toggle-wrapper {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Move toggle to the right */
+    margin-left: 35px;
 }
 
 .theme-switch {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .theme-switch input {
@@ -99,66 +125,89 @@ header nav ul li a:hover {
     position: absolute;
 }
 
-.theme-switch label {
+.theme-toggle-label {
     cursor: pointer;
-    text-indent: -9999px;
-    width: 52px;
+    background-color: rgb(45, 45, 45);
+    width: 55px;
     height: 27px;
-    background: grey;
-    display: block;
     border-radius: 100px;
     position: relative;
-}
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    box-sizing: border-box;}
 
-.theme-switch label:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 21px;
-    height: 21px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-
-.theme-switch input:checked + label {
-    background: #008080;
-}
-
-.theme-switch input:checked + label:after {
-    left: calc(100% - 3px);
-    transform: translateX(-100%);
-}
-
-.theme-switch label:active:after {
-    width: 28px;
-}
-
-.theme-switch .toggle-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-}
-
-.theme-switch .sun-icon {
-    left: 5px;
+.theme-toggle-label .sun-icon {
     color: #ffdd57;
-}
-
-.theme-switch .moon-icon {
-    right: 5px;
-    color: #444;
-    opacity: 0;
-}
-
-.theme-switch input:checked + label .moon-icon {
     opacity: 1;
 }
 
-.theme-switch input:checked + label .sun-icon {
+.theme-toggle-label .moon-icon {
+    color: #fff;
     opacity: 0;
+}
+
+.theme-switch input:checked + .theme-toggle-label {
+    background-color: #008080;
+}
+
+.theme-switch input:checked + .theme-toggle-label .toggle-ball {
+    transform: translateX(25px);
+}
+
+.theme-switch input:checked + .theme-toggle-label .sun-icon {
+    opacity: 0;
+}
+
+.theme-switch input:checked + .theme-toggle-label .moon-icon {
+    opacity: 1;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+    cursor: url('media/cursors/dark/arrow.cur'), auto; /* Dark-Mode Custom Cursor */
+}
+
+/* Dark-Mode Custom Cursors */
+/* Jolt Cursors by rw-designer */
+
+.dark-mode a {
+    cursor: url('media/cursors/dark/select.cur'), pointer; /* Dark mode cursor for links */
+}
+
+.dark-mode input, .dark-mode textarea {
+    cursor: url('media/cursors/dark/text.cur'), text; /* Dark mode cursor for text inputs */
+}
+
+.dark-mode header {
+    background: #111;
+}
+
+.dark-mode .highlight h3, .dark-mode .highlight .btn, .dark-mode .social-links a {
+    color: #e0f7fa;
+}
+
+.dark-mode .highlight:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .mission, .dark-mode .vision {
+    background: #222;
+}
+
+.dark-mode footer {
+    background: #000;
+}
+
+header, footer, .highlight, .issue {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode header, .dark-mode footer, .dark-mode .highlight, .dark-mode .issue {
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 #hero {
@@ -379,7 +428,8 @@ header nav ul li a:hover {
     background: #f9f9f9;
     padding: 20px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -399,6 +449,61 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Screen-size breaking point(s) for better Mobile/Tablet optimisation */
+@media (max-width: 790px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Adjust the hero text */
+    .hero-text {
+        padding-top: 60px; /* Add padding to prevent overlap */
+    }
+
+    /* Adjust font sizes for hero text */
+    .hero-text h2 {
+        font-size: 33px; /* Reduce font size */
+    }
+
+    .hero-text p {
+        font-size: 18px; /* Reduce font size */
+    }
+
+    .hero-text .btn {
+        padding: 8px 16px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .issue {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .issue-cover {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .issue-cover img {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 .scrollbutton {
@@ -425,87 +530,83 @@ footer p {
     margin: 0;
 }
 
-.dark-mode {
-    background-color: #333;
-    color: #f4f4f4;
+/* 404 page */
+#error-page {
+    text-align: center;
+    padding: 100px 20px;
 }
 
-.dark-mode header {
-    background: #111;
+#error-page h2 {
+    font-size: 48px;
+    color: #333;
 }
 
-.dark-mode .highlight h3, .dark-mode .highlight .btn, .dark-mode .social-links a {
+.dark-mode #error-page h2 {
     color: #e0f7fa;
 }
 
-.dark-mode .highlight:hover {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+#error-page p {
+    font-size: 24px;
+    color: #666;
 }
 
-.dark-mode .mission, .dark-mode .vision {
-    background: #222;
+.dark-mode #error-page p {
+    color: #e0f7fa;
 }
 
-.dark-mode footer {
+#error-page .btn {
+    display: inline-block;
+    background: #008080;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#error-page .btn:hover {
+    background: #005959;
+    transform: translateY(-3px);
+}
+
+#pet {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.eye {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: height 0.2s ease;
+}
+
+#left-eye {
+    left: 25%;
+}
+
+#right-eye {
+    right: 25%;
+}
+
+.pupil {
+    position: absolute;
+    width: 20px;
+    height: 20px;
     background: #000;
+    border-radius: 50%;
+    top: 30%;
+    left: 30%;
+    transform: translate(-30%, -30%);
 }
 
-/* Dark Mode Shadows */
-header, footer, .highlight, .issue {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode header, .dark-mode footer, .dark-mode .highlight, .dark-mode .issue {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-}
-
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header nav ul li {
-        margin: 10px 0;
-    }
-
-    .hero-text {
-        padding: 10px;
-    }
-
-    .hero-text h2 {
-        font-size: 28px;
-    }
-
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    .hero-text .btn {
-        padding: 8px 16px;
-    }
-
-    section {
-        padding: 60px 0;
-    }
-
-    .issue {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .issue-cover {
-        margin-top: 20px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .issue-cover img {
-        width: 100%;
-        max-width: 300px;
-    }
+.eye.blinking .pupil {
+    opacity: 0;
 }

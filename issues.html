@@ -4,6 +4,7 @@ Author: Alexandros Kordatzakis
 Created: 2024
 -->
 <!DOCTYPE html>
+<!-- TODO: Implement Lazy-Loading for images when they're not visible on the viewport (in te future when we will have more issues) -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,79 +28,85 @@ Created: 2024
     <header>
         <div class="container">
             <h1 class="logo">
-                <a href="index.html">
-                    <img src="media/Logo-2.PNG" alt="Edge of Medicine Logo">
+                <a href="index.html" aria-label="Edge of Medicine Homepage">
+                    <img src="media/logos/Logo-2.PNG" alt="Edge of Medicine Logo">
                     Edge of Medicine
                 </a>
             </h1>
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="issues.html"><i class="fas fa-book"></i> Issues</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="index.html" aria-label="Home Page"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="issues.html" aria-label="Issues Page"><i class="fas fa-book"></i> Issues</a></li>
+                    <li><a href="about.html" aria-label="About Us Page"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.html" aria-label="Contact Us Page"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li class="theme-toggle-wrapper">
+                        <div class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" aria-label="Toggle theme between light and dark">
+                            <label for="theme-toggle" class="theme-toggle-label">
+                                <i class="fas fa-sun sun-icon"></i>
+                                <i class="fas fa-moon moon-icon"></i>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
             </nav>
-            <!-- <div class="theme-toggle-wrapper">
-                <div class="theme-switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <label for="theme-toggle">Toggle</label>
-                </div>
-            </div> -->
         </div>
     </header>
 
-    <section id="issues">
+    <section id="issues" aria-labelledby="issues-heading">
         <div class="container">
             <h2>Our Issues</h2>
             <!-- Latest Issue -->
-            <div class="issue latest-issue" id="latest">
+            <div class="issue latest-issue" id="latest" aria-labelledby="latest-issue-heading">
                 <div class="issue-details">
-                    <h3>Spring 2024 <span>(Latest Issue)</span></h3>
+                    <h3>Summer 2024 <span>(Latest Issue)</span></h3>
+                    <p><strong>Highlights:</strong></p>
+                    <ul>
+                        <li>Rabies: The Terrifying Disease and How We Fight It</li>
+                        <li>Brain Organoids in Disease Modelling and Drug Testing</li>
+                        <li>3D Bio-Printing in Airway Reconstructive Surgery</li>
+                    </ul>
+                    <a href="issues/Summer2024.pdf" target="_blank" class="btn" aria-label="Read Summer 2024 Issue">Read the Issue</a>
+                </div>
+                <div class="issue-cover">
+                    <a href="issues/Summer2024.pdf" aria-label="Summer 2024 Cover">
+                    <img src="media/covers/summer2024-cover.png" alt="Summer 2024 Cover">
+                    </a>
+                </div>
+            </div>
+            <!-- Past Issues -->
+            <h2>Past Issues</h2>
+            <div class="issue past-issue" id="past">
+                <div class="issue-details">
+                    <h3>Spring 2024</h3>
                     <p><strong>Highlights:</strong></p>
                     <ul>
                         <li>Unraveling the mystery: nervus terminalis - An in-depth look at the enigmatic cranial nerve 0.</li>
                         <li>Takotsubo cardiomyopathy: is it as scary as it sounds? - Exploring the transient heart condition often triggered by stress.</li>
                         <li>Unveiling the efficacy of anti-obesity drugs - Evaluating the effectiveness of new treatments for obesity.</li>
                     </ul>
-                    <a href="issues/Spring2024.pdf" target="_blank" class="btn">Read the Issue</a>
+                    <a href="issues/Spring2024.pdf" target="_blank" class="btn" aria-label="Read Spring 2024 Issue">Read the Issue</a>
                 </div>
                 <div class="issue-cover">
                     <a href="issues/Spring2024.pdf">
-                    <img src="media/spring2024-cover.png" alt="Spring 2024 Cover">
+                    <img src="media/covers/spring2024-cover.png" alt="Spring 2024 Cover">
                     </a>
                 </div>
             </div>
-            <!-- Future code for past issues, commented out
-            <h2>Past Issues</h2>
-            <div class="issue past-issue" id="past">
-                <div class="issue-details">
-                    <h3>Past Issue Title</h3>
-                    <p>Summary of the past issue highlights.</p>
-                    <a href="issues/past-issue.pdf" target="_blank" class="btn">Read the Issue</a>
-                </div>
-                <div class="issue-cover">
-                    <a href="issues/past-issue.pdf">
-                    <img src="media/past-issue-cover.jpg" alt="Past Issue Cover">
-                    </a>
-                </div>
-            </div>
-            -->
         </div>
     </section>
 
-    <a href="#" class="scrollbutton" id="scrollbuttonid"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="scrollbutton" id="scrollbuttonid" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></a>
 
-    <footer>
+    <footer aria-label="Footer">
         <div class="container">
             <p>&copy; 2024 Edge of Medicine. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank"><i class="fas fa-users"></i></a>
+                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank" aria-label="linkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank" aria-label="Join Edge of Medicine"><i class="fas fa-users"></i></a>
             </div>
         </div>
     </footer>
 </body>
 </html>
-<!-- TODO: Inlcude ARIA Labels -->

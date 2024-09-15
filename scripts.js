@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
+        
     const themeToggle = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme') || 'light';
     if (currentTheme === 'dark') {
@@ -96,4 +96,62 @@ document.addEventListener('DOMContentLoaded', () => {
             highlight.classList.remove('animate__animated', 'animate__pulse');
         });
     });
+
+    // 404-Pet
+    const leftEye = document.getElementById('left-eye');
+    const rightEye = document.getElementById('right-eye');
+    const leftPupil = document.getElementById('left-pupil');
+    const rightPupil = document.getElementById('right-pupil');
+
+    if (leftEye && rightEye && leftPupil && rightPupil) {
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const eyePosition = (eye, pupil) => {
+                const rect = eye.getBoundingClientRect();
+                const eyeX = rect.left + rect.width / 2;
+                const eyeY = rect.top + rect.height / 2;
+
+                const angle = Math.atan2(mouseY - eyeY, mouseX - eyeX);
+                const distance = Math.min(15, Math.hypot(mouseX - eyeX, mouseY - eyeY) / 10);
+
+                const pupilX = distance * Math.cos(angle);
+                const pupilY = distance * Math.sin(angle);
+
+                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+            };
+
+            eyePosition(leftEye, leftPupil);
+            eyePosition(rightEye, rightPupil);
+        });
+
+        const blink = (eye) => {
+            eye.classList.add('blinking');
+            setTimeout(() => {
+                eye.style.height = '10px';
+                eye.querySelector('.pupil').style.opacity = '0';
+            }, 100);
+            setTimeout(() => {
+                eye.style.height = '60px';
+                eye.querySelector('.pupil').style.opacity = '1';
+            }, 300);
+            setTimeout(() => {
+                eye.classList.remove('blinking');
+            }, 500);
+        };
+
+        document.addEventListener('click', () => {
+            const eyes = [leftEye, rightEye];
+            const randomEye = eyes[Math.floor(Math.random() * eyes.length)];
+            blink(randomEye);
+        });
+
+        // Random blinking every 3-5 seconds
+        setInterval(() => {
+            const eyes = [leftEye, rightEye];
+            const randomEye = eyes[Math.floor(Math.random() * eyes.length)];
+            blink(randomEye);
+        }, Math.random() * 3000 + 2000); // Random interval between 3 and 5 seconds
+    }
 });

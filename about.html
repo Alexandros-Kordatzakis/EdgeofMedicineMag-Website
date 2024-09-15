@@ -4,6 +4,7 @@ Author: Alexandros Kordatzakis
 Created: 2024
 -->
 <!DOCTYPE html>
+<!-- TODO: Implement Lazy-Loading for images when they're not visible on the viewport (in te future when we will have more issues) -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,44 +28,47 @@ Created: 2024
     <header>
         <div class="container">
             <h1 class="logo">
-                <a href="index.html">
-                    <img src="media/Logo-2.PNG" alt="Edge of Medicine Logo">
+                <a href="index.html" aria-label="Edge of Medicine Homepage">
+                    <img src="media/logos/Logo-2.PNG" alt="Edge of Medicine Logo">
                     Edge of Medicine
                 </a>
             </h1>
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="issues.html"><i class="fas fa-book"></i> Issues</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="index.html" aria-label="Home Page"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="issues.html" aria-label="Issues Page"><i class="fas fa-book"></i> Issues</a></li>
+                    <li><a href="about.html" aria-label="About Us Page"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.html" aria-label="Contact Us Page"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li class="theme-toggle-wrapper">
+                        <div class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" aria-label="Toggle theme between light and dark">
+                            <label for="theme-toggle" class="theme-toggle-label">
+                                <i class="fas fa-sun sun-icon"></i>
+                                <i class="fas fa-moon moon-icon"></i>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
             </nav>
-            <!-- <div class="theme-toggle-wrapper">
-                <div class="theme-switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <label for="theme-toggle">Toggle</label>
-                </div>
-            </div> -->
         </div>
     </header>
 
-    <section id="about">
+    <section id="about" aria-labelledby="about-heading">
         <div class="container">
             <h2>About Us</h2>
             <p>Edge of Medicine is a student-led science journal of the European University Cyprus, dedicated to presenting the latest research findings in the realm of medical sciences.</p>
-            <div class="mission">
+            <div class="mission" aria-labelledby="mission-heading">
                 <h3>Our Mission</h3>
                 <p>To bridge the gap between cutting-edge medical research and the broader community, fostering a deeper understanding and appreciation of the advancements in medical science.</p>
             </div>
-            <div class="vision">
+            <div class="vision" aria-labelledby="vision-heading">
                 <h3>Our Vision</h3>
                 <p>To be a leading source of reliable, impactful, and accessible medical research information, inspiring future generations of scientists and healthcare professionals.</p>
             </div>
         </div>
     </section>
 
-    <section id="team">
+    <section id="team" aria-labelledby="team-heading">
         <div class="container">
             <h2>Our Team</h2>
             <div class="team-section">
@@ -88,18 +92,17 @@ Created: 2024
         </div>
     </section>
 
-    <a href="#" class="scrollbutton" id="scrollbuttonid"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="scrollbutton" id="scrollbuttonid" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></a>
     
-    <footer>
+    <footer aria-label="Footer">
         <div class="container">
             <p>&copy; 2024 Edge of Medicine. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank"><i class="fas fa-users"></i><strong>Join Edge of Medicine!</strong></a>
+                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank" aria-label="linkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank" aria-label="Join Edge of Medicine"><i class="fas fa-users"></i></a>
             </div>
         </div>
     </footer>
 </body>
 </html>
-<!-- TODO: Inlcude ARIA Labels -->

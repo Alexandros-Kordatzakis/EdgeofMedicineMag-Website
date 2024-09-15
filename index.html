@@ -4,6 +4,14 @@ Author: Alexandros Kordatzakis
 Created: 2024
 -->
 <!DOCTYPE html>
+<!-- TODO: Generate a sitemap.xml -->
+<!-- TODO: Connect it to G.A.4 -->
+<!-- TODO: Verify the website via Google Search Console and Bing Webmaster Tools (using the sitemap) -->
+<!-- TODO: Newsletter Subscription -->
+<!-- TODO: Secret and non-indexable Admin page with dashboard, metrics, Backups, Analytics, etc. -->
+<!-- FIXME: Fix and create Schema Markups for all pages (https://www.semrush.com/blog/schema-markup/) -->
+<!-- TODO: Add Terms of Service, Cookie Notice and GDPR stuff -->
+<!-- TODO: Implement Lazy-Loading for images when they're not visible on the viewport (in te future when we will have more issues) -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +40,7 @@ Created: 2024
       "@type": "Organization",
       "name": "Edge of Medicine",
       "url": "https://www.edgeofmedicine.com",
-      "logo": "https://www.edgeofmedicine.com/media/Logo-2.PNG",
+      "logo": "https://www.edgeofmedicine.com/media/logos/Logo-2.PNG",
       "sameAs": [
         "https://www.facebook.com/edgeofmedicine",
         "https://twitter.com/edgeofmedicine",
@@ -45,65 +53,65 @@ Created: 2024
     <header>
         <div class="container">
             <h1 class="logo">
-                <a href="index.html">
-                    <img src="media/Logo-2.PNG" alt="Edge of Medicine Logo">
+                <a href="index.html" aria-label="Edge of Medicine Homepage">
+                    <img src="media/logos/Logo-2.PNG" alt="Edge of Medicine Logo">
                     Edge of Medicine
                 </a>
             </h1>
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="issues.html"><i class="fas fa-book"></i> Issues</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="index.html" aria-label="Home Page"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="issues.html" aria-label="Issues Page"><i class="fas fa-book"></i> Issues</a></li>
+                    <li><a href="about.html" aria-label="About Us Page"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.html" aria-label="Contact Us Page"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li class="theme-toggle-wrapper">
+                        <div class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" aria-label="Toggle theme between light and dark">
+                            <label for="theme-toggle" class="theme-toggle-label">
+                                <i class="fas fa-sun sun-icon"></i>
+                                <i class="fas fa-moon moon-icon"></i>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
             </nav>
-            <!-- <div class="theme-toggle-wrapper">
-                <div class="theme-switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <label for="theme-toggle">
-                        <span class="toggle-icon sun-icon">☀️</span>
-                        <span class="toggle-icon moon-icon">🌙</span>
-                    </label>
-                </div>
-            </div> -->
         </div>
     </header>
 
     <!-- FIXME: Replace Hero-Image with a nicer one -->
     <!-- TODO: Make the Hero a gallery with sliding images from pages of our issues -->
-    <section id="hero">
+    <section id="hero" aria-label="Hero Section">
         <div class="hero-container">
             <div class="overlay"></div>
             <img src="media/hero-image.jpg" alt="Medical Research">
             <div class="hero-text">
                 <h2>Welcome to Edge of Medicine</h2>
                 <p>Discover the latest in medical research and advancements.</p>
-                <a href="issues.html#latest" class="btn">Read Our Latest Issue</a>
+                <a href="issues.html#latest" class="btn" aria-label="Read Our Latest Issue">Read Our Latest Issue</a>
             </div>
         </div>
     </section>
 
-    <section id="highlights">
+    <section id="highlights" aria-labelledby="highlights-heading">
         <div class="container">
             <h2>Highlights</h2>
             <!-- Current Issue Highlights -->
-            <div class="highlight">
+            <div class="highlight" aria-labelledby="highlight-1">
                 <h3>Unraveling the Mystery: Nervus Terminalis</h3>
                 <p>An in-depth look at the enigmatic cranial nerve 0.</p>
-                <a href="issues.html#latest" class="btn">Read More</a>
+                <a href="issues.html#latest" class="btn" aria-label="Read More about Nervus Terminalis">Read More</a>
             </div>
-            <div class="highlight">
+            <div class="highlight" aria-labelledby="highlight-2">
                 <h3>Takotsubo Cardiomyopathy</h3>
                 <p>Exploring the transient heart condition often triggered by stress.</p>
-                <a href="issues.html#latest" class="btn">Read More</a>
+                <a href="issues.html#latest" class="btn" aria-label="Read More about Takotsubo Cardiomyopathy">Read More</a>
             </div>
-            <div class="highlight">
+            <div class="highlight" aria-labelledby="highlight-3">
                 <h3>Unveiling the Efficacy of Anti-Obesity Drugs</h3>
                 <p>Evaluating the effectiveness of new treatments for obesity.</p>
-                <a href="issues.html#latest" class="btn">Read More</a>
+                <a href="issues.html#latest" class="btn" aria-label="Read More about Anti-Obesity Drugs">Read More</a>
             </div>
-            <!-- Future code for past issues, commented out
+            <!-- * Future code for past issues, commented out
             <h2>Past Issue Highlights</h2>
             <div class="highlight">
                 <h3>Past Issue Title</h3>
@@ -114,18 +122,17 @@ Created: 2024
         </div>
     </section>
 
-    <a href="#" class="scrollbutton" id="scrollbuttonid"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="scrollbutton" id="scrollbuttonid" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></a>
 
-    <footer>
+    <footer aria-label="Footer">
         <div class="container">
             <p>&copy; 2024 Edge of Medicine. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank"><i class="fas fa-users"></i></a>
+                <a href="https://www.instagram.com/edgeofmedicine.mag" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/edge-of-medicine/" target="_blank" aria-label="linkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlzLcQBKc74vueDV1RqnwJ4ditrp0WLVkGxvNZNxrrpUHKwQ/viewform" target="_blank" aria-label="Join Edge of Medicine"><i class="fas fa-users"></i></a>
             </div>
         </div>
     </footer>
 </body>
 </html>
-<!-- TODO: Inlcude ARIA Labels -->
