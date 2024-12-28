@@ -1,6 +1,0 @@
-# User-agent: *
-# Disallow: /admin/
-# Disallow: /private/
-
-# Sitemap: https://www.edgeofmedicine.com/sitemap.xml
-# FIXME: Commented out because we don't have a URL yet
