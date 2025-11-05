@@ -23,6 +23,18 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Light mode text selection */
+::selection {
+    background: #008080;   /* Teal */
+    color: #fff;
+}
+
+/* Dark mode text selection */
+.dark-mode ::selection {
+    background: #3ac9db;   /* Light teal */
+    color: #222222;
+}
+
 /* Custom Cursors */
 /* Fluent Cursors from rw-designer */ 
 a {
